@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:firebase_vertexai/firebase_vertexai.dart';
+import 'package:firebase_ai/firebase_ai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ai_toolkit/flutter_ai_toolkit.dart';
 
@@ -50,10 +50,11 @@ class _HomePageState extends State<HomePage> {
     _provider!.addListener(_onHistoryChanged);
   }
 
-  LlmProvider _createProvider(Iterable<ChatMessage>? history) => VertexProvider(
+  LlmProvider _createProvider(Iterable<ChatMessage>? history) =>
+      FirebaseProvider(
         history: history,
-        model: FirebaseVertexAI.instance.generativeModel(
-          model: 'gemini-1.5-flash',
+        model: FirebaseAI.vertexAI().generativeModel(
+          model: 'gemini-2.0-flash',
         ),
       );
 
